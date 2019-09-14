@@ -33,11 +33,11 @@ public class TheatreDao implements ITheatreDao{
 
 	    @Override
 	    public List<Theatre> getTheatres(Integer cityPincode) {
-	        List<Theatre> ret = new ArrayList<>();
-	        List<Map.Entry<Integer,Theatre>> temp = new ArrayList<>(theatres.entrySet());
+	        List<Theatre> theatreList = new LinkedList<>();
+	        List<Map.Entry<Integer,Theatre>> temp = new LinkedList<>(theatres.entrySet());
 	        for(int i=0;i<temp.size();i++){
 	            if(cityPincode.equals(temp.get(i).getValue().getCityPincode())){
-	                ret.add(temp.get(i).getValue());
+	                theatreList.add(temp.get(i).getValue());
 	            }
 	        }
 	        return ret;
