@@ -104,9 +104,7 @@ public class MyApplication {
 				System.out.println("4. Delete Theater");
 				System.out.println("5. Get Cities");
 				System.out.println("6. Get Theatres");
-				System.out.println("7. Add Shows of Movie");
-				System.out.println("8. Delete Movie Shows");
-				System.out.println("9. Quit");
+				System.out.println("7. Quit");
 				System.out.println("Enter Function Number you want to perform: ");
 				int input = scanner.nextInt();
 				switch (input) {
@@ -164,7 +162,7 @@ public class MyApplication {
 				case 3:
 					System.out.println("Enter the theatre details");
 					try {
-						service.addTheatre(new Theatre("Elante Mall", 160087, "rajmundry", "Chandigarh", "Rajveer",
+						service.addTheatre(new Theatre("Elante", 160087, "rajmundry", "Chandigarh", "Rajveer",
 								"9814357234", listofScreensT1, listofMovies));
 					} catch (Exception exception) {
 						System.out.println(exception.getMessage());
@@ -193,14 +191,8 @@ public class MyApplication {
 						System.out.println(theatreList.get(i).getValue());
 					}
 					break;
+				
 				case 7:
-					//add movie shows
-					break;
-				case 8:
-					// delete shows of movie
-					
-					break;
-				case 9:
 					exit(1);
 
 				}
@@ -301,8 +293,11 @@ public class MyApplication {
 				case 2:
 					// prints list of movies
 					System.out.println("Select movie you want to see shows for");
+					for(int i=0;i<listofMovies.size();i++){
+					    System.out.println(listofMovies.get(i));
+					} 
 					String choseMovie = scanner.next();
-					// method call by movie name
+					
 					// print list of theaters that showcase that movie
 					System.out.println("Select Theater");
 					String choseTheater = scanner.next();
