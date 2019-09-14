@@ -1,6 +1,7 @@
 package com.cg.movies4u.Ui;
 
 import com.cg.movies4u.Dto.Movie;
+
 import com.cg.movies4u.Dto.Screen;
 import com.cg.movies4u.Dto.Show;
 import com.cg.movies4u.Dto.Theatre;
@@ -33,8 +34,8 @@ public class MyApplication {
 		java.util.Date showStartTimeSM23 = sdf1.parse("19:05:00");
 		java.util.Date showEndTimeSM23 = sdf1.parse("22:00:00");
 		// java.util.Date movieDate = sdf.parse("2019-09-11");
-		Map<Date, List<String>> hashmap = new HashMap<Date, List<String>>();
-		Map<Date, List<String>> hashmap1 = new HashMap<Date, List<String>>();
+		Map<Date, List<String>> bookedSeats = new HashMap<Date, List<String>>();
+		Map<Date, List<String>> blockedSeats = new HashMap<Date, List<String>>();
 		ArrayList<Show> listofShowsMovie1 = new ArrayList<Show>();
 		ArrayList<Show> listofShowsMovie2 = new ArrayList<Show>();
 		ArrayList<Movie> listofMovies = new ArrayList<Movie>();
@@ -46,15 +47,15 @@ public class MyApplication {
 			listofMovies.add(movie1);
 			listofMovies.add(movie2);
 			Show showM11 = new Show(movie1, movieEndDate, "English", showStartTimeSM11, showEndTimeSM11, releaseDate,
-					hashmap, hashmap1);
+					bookedSeats, blockedSeats);
 			Show showM12 = new Show(movie1, movieEndDate, "English", showStartTimeSM12, showEndTimeSM12, releaseDate,
-					hashmap, hashmap1);
+					bookedSeats, blockedSeats);
 			Show showM21 = new Show(movie2, movieEndDate, "English", showStartTimeSM21, showEndTimeSM21, releaseDate1,
-					hashmap, hashmap1);
+					bookedSeats, blockedSeats);
 			Show showM22 = new Show(movie2, movieEndDate, "English", showStartTimeSM22, showEndTimeSM22, releaseDate1,
-					hashmap, hashmap1);
+					bookedSeats, blockedSeats);
 			Show showM23 = new Show(movie2, movieEndDate, "English", showStartTimeSM23, showEndTimeSM23, releaseDate1,
-					hashmap, hashmap1);
+					bookedSeats, blockedSeats);
 			listofShowsMovie1.add(showM11);
 			listofShowsMovie1.add(showM12);
 			listofShowsMovie2.add(showM21);
@@ -104,21 +105,17 @@ public class MyApplication {
 				System.out.println("4. Delete Theater");
 				System.out.println("5. Get Cities");
 				System.out.println("6. Get Theatres");
-				System.out.println("7. Add Shows of Movie");
-				System.out.println("8. Delete Movie Shows");
-				System.out.println("9. Quit");
+				System.out.println("7. Quit");
 				System.out.println("Enter Function Number you want to perform: ");
 				int input = scanner.nextInt();
 				switch (input) {
 
 				case 1:
 					// show theater list
-					System.out.println("hey");
-					System.out.println(service.getTheatres());
 					
+					System.out.println(service.getTheatres());
 					System.out.println("Enter The Theater Id to which you want to add movie: ");
 					int theaterid = scanner.nextInt();
-					// method call with theater Id
 					System.out.println("Enter the movie details to add to the theatre");
 					scanner.nextLine();
 					System.out.println("Enter the movie name");
@@ -136,12 +133,12 @@ public class MyApplication {
 					String language = scanner.nextLine();
 					Movie movie = new Movie(name, genre, director, movieLength, date, language);
 					Show show = new Show(movie, sdf.parse("2019-06-28"), language, sdf1.parse("12:05:00"),
-							sdf1.parse("3:05:00"), date, new HashMap<Date, List<String>>(),
-							new HashMap<Date, List<String>>());
+							sdf1.parse("3:05:00"), date, bookedSeats,
+							blockedSeats);
 					for (int i = 0; i < service.getScreensInTheatre(theaterid).size(); i++) {
 						System.out.println(service.getScreensInTheatre(theaterid).get(i));
 					}
-					System.out.println("Enter the screen id to be added");
+					System.out.println("Enter the screen id for the show to be added to: ");
 					service.addShow(theaterid, scanner.nextInt(), show);
 					scanner.nextLine();
 					break;
@@ -192,13 +189,6 @@ public class MyApplication {
 					for (int i = 0; i < theatreList.size(); i++) {
 						System.out.println(theatreList.get(i).getValue());
 					}
-					break;
-				case 7:
-					//add movie shows
-					break;
-				case 8:
-					// delete shows of movie
-					
 					break;
 				case 9:
 					exit(1);
@@ -319,7 +309,7 @@ public class MyApplication {
 
 	private static void exit(int i) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
