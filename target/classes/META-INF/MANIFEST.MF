@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: DAK
 Build-Jdk: 1.8.0_221
+=======
+Built-By: Admin
+Build-Jdk: 1.8.0_211
+>>>>>>> branch 'master' of https://github.com/edvdivya/MovieBookingSystem.git
 Created-By: Maven Integration for Eclipse
 
