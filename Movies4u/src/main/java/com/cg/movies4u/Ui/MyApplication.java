@@ -286,7 +286,7 @@ public class MyApplication {
 				case 1:
 					System.out.println("Enter Your name");
 					System.out.println("Enter your contact");
-					System.out.println("Enter your email address");
+					
 					System.out.println("Enter the password");
 					System.out.println("Confirm password");
 					break;
@@ -295,7 +295,7 @@ public class MyApplication {
 					System.out.println("Select movie you want to see shows for");
 					for(int i=0;i<listofMovies.size();i++){
 					    System.out.println(listofMovies.get(i));
-					} 
+					}
 					String choseMovie = scanner.next();
 					
 					// print list of theaters that showcase that movie

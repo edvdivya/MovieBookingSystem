@@ -40,7 +40,7 @@ public class TheatreDao implements ITheatreDao{
 	                theatreList.add(temp.get(i).getValue());
 	            }
 	        }
-	        return ret;
+	        return theatreList;
 	    }
 
 	    @Override
