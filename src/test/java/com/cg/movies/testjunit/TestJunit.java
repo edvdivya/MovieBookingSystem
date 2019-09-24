@@ -15,6 +15,7 @@ import com.cg.movies.dto.Customer;
 import com.cg.movies.dto.Movie;
 import com.cg.movies.dto.Show;
 import com.cg.movies.dto.Theatre;
+import com.cg.movies.exception.UserException;
 import com.cg.movies.service.AdminService;
 import com.cg.movies.service.AdminServiceImpl;
 import com.cg.movies.service.CustomerService;
@@ -126,5 +127,8 @@ public class TestJunit {
 	}
 	public void testRemoveAdmin() {
 		assertEquals(admin,adminService.remove(1));
+	}
+	public void testAddCustome() throws UserException {
+		assertEquals(customer, customerService.addCustomer(customer));
 	}
 }
